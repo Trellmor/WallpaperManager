@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager.cs" />
+    <Compile Include="WinAPI\ActiveDesktop.cs" />
     <Compile Include="WinAPI\Desktop.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Mono.Options\Options.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="SysTrayApp.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="WinAPI\DesktopWallpaper.cs" />
     <Compile Include="WinAPI\WinAPI.cs" />
     <EmbeddedResource Include="FormWallpaperManager.resx">
       <DependentUpon>FormWallpaperManager.cs</DependentUpon>

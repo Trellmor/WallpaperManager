@@ -16,10 +16,24 @@ namespace WallpaperManager
 
             if (settings.Profiles.Contains(current))
             {
+                
                 current = settings.Profiles[settings.Profiles.IndexOf(current)];
-                if (!String.IsNullOrEmpty(current.Wallpaper) && File.Exists(current.Wallpaper))
+                if (Desktop.SupportsDesktopWallpaper())
                 {
-                    Desktop.SetWallpaperUsingActiveDesktop(current.Wallpaper);
+                    foreach (XmlScreen screen in current.Screens)
+                    {
+                        if (!String.IsNullOrEmpty(screen.Wallpaper) && File.Exists(screen.Wallpaper))
+                        {
+                            Desktop.SetWallpaperUsingDesktopWallpaper(screen.Bounds, screen.Wallpaper);
+                        }
+                    }
+                }
+                else
+                {
+                    if (!String.IsNullOrEmpty(current.Wallpaper) && File.Exists(current.Wallpaper))
+                    {
+                        Desktop.SetWallpaperUsingActiveDesktop(current.Wallpaper);
+                    }
                 }
             }
         }
